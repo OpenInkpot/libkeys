@@ -1,0 +1,4 @@
+usr/include/*
+usr/lib/libkeys.a
+usr/lib/libkeys.so
+usr/lib/pkgconfig/libkeys.pc

@@ -1,0 +1,27 @@
+Source: libkeys
+Section: core
+Maintainer: Mikhail Gusarov <dottedmag@dottedmag.net>
+Build-Depends: debhelper (>= 7), autoconf, automake, libtool, libeina-dev, libefreet-dev
+XCS-Cross-Host-Build-Depends: debhelper (>= 7), autoconf, automake, libtool, automake
+XCS-Cross-Build-Depends: libeina-dev, libefreet-dev
+Priority: optional
+Standards-Version: 3.8.3
+
+Package: libkeys0
+Architecture: any
+Depends: ${shlibs:Depends}
+Description: FIXME
+ FIXME
+
+Package: libkeys0-dbg
+Architecture: any
+Depends: libkeys0 (= ${binary:Version})
+Description: FIXME -- debug package
+ FIXME
+
+Package: libkeys-dev
+Architecture: any
+Section: libdevel
+Depends: libkeys0 (= ${binary:Version})
+Description: FIXME
+ FIXME

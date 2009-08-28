@@ -10,18 +10,23 @@ Standards-Version: 3.8.3
 Package: libkeys0
 Architecture: any
 Depends: ${shlibs:Depends}
-Description: FIXME
- FIXME
+Description: OpenInkpot key handling library
+ This library provides a code for handling keys for OpenInkpot applications.
 
 Package: libkeys0-dbg
 Architecture: any
 Depends: libkeys0 (= ${binary:Version})
 Description: FIXME -- debug package
- FIXME
+ This library provides a code for handling keys for OpenInkpot applications.
+ .
+ This package contains debugging symbols.
 
 Package: libkeys-dev
 Architecture: any
 Section: libdevel
 Depends: libkeys0 (= ${binary:Version})
-Description: FIXME
- FIXME
+Description: FIXME -- development files
+ This library provides a code for handling keys for OpenInkpot applications.
+ .
+ This package contains development files.
+

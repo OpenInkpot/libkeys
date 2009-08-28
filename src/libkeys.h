@@ -5,18 +5,19 @@
  * key * context -> action mapping library
  *
  * Key mappings are read from the following files:
+ *   /usr/share/keys/$app.ini
  *   /etc/keys/$app.ini
- *   $home/.e/apps/$app/keys.ini
+ *   $home/.keys/$app.ini
  *
- * keys.ini in home directory _amends_ system config, not _replaces_ it.
  */
 
 #include <stdbool.h>
+#include <Evas.h>
 
 struct keys_t;
 typedef struct keys_t keys_t;
 
-keys_t* keys_init(const char* app_name);
+keys_t* keys_alloc(const char* app_name);
 
 /*
  * Returns action for specified pair (context, key)
@@ -25,6 +26,10 @@ keys_t* keys_init(const char* app_name);
 const char* keys_lookup(const keys_t* keys,
                         const char* context, const char* key);
 
-void keys_shutdown(keys_t* keys);
+const char* keys_lookup_by_event(const keys_t* keys,
+                                 const char* context,
+                                 const Evas_Event_Key_Up* event);
+
+void keys_free(keys_t* keys);
 
 #endif

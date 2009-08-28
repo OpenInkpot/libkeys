@@ -6,26 +6,32 @@
 
 #include "libkeys.h"
 
+#define SHARE_DIR DATADIR "/keys/"
 #define CONFIG_DIR SYSCONFDIR "/keys/"
+
+#define CONFIG_NUM 3
 
 struct keys_t
 {
-    Efreet_Ini* sys_config_file;
-    Efreet_Ini* user_config_file;
+    Efreet_Ini* configs[CONFIG_NUM];
 };
 
-keys_t* libkeys_init(const char* app_name)
+keys_t* keys_alloc(const char* app_name)
 {
     if(!efreet_init())
         return NULL;
 
-    char sys_config_file[PATH_MAX];
-    int r = snprintf(sys_config_file, PATH_MAX, CONFIG_DIR "%s.ini", app_name);
+    char share_config_file[PATH_MAX];
+    int r = snprintf(share_config_file, PATH_MAX, SHARE_DIR "%s.ini", app_name);
+    if(r < 0 || r >= PATH_MAX)
+        return NULL;
+    char etc_config_file[PATH_MAX];
+    r = snprintf(etc_config_file, PATH_MAX, CONFIG_DIR "%s.ini", app_name);
     if(r < 0 || r >= PATH_MAX)
         return NULL;
     char user_config_file[PATH_MAX];
     r = snprintf(user_config_file, PATH_MAX,
-                 "%s/.e/apps/%s/keys.ini", getenv("HOME"), app_name);
+                 "%s/.keys/%s.ini", getenv("HOME"), app_name);
     if(r < 0 || r >= PATH_MAX)
         return NULL;
 
@@ -33,16 +39,16 @@ keys_t* libkeys_init(const char* app_name)
     if(!keys)
         return NULL;
 
-    keys->sys_config_file = efreet_ini_new(sys_config_file);
-    keys->user_config_file = efreet_ini_new(user_config_file);
+    keys->configs[0] = efreet_ini_new(share_config_file);
+    keys->configs[1] = efreet_ini_new(etc_config_file);
+    keys->configs[2] = efreet_ini_new(user_config_file);
 
-    if(!keys->sys_config_file && !keys->user_config_file)
-    {
-        free(keys);
-        return NULL;
-    }
+    for(int i = 0; i < CONFIG_NUM; ++i)
+        if(keys->configs[i])
+            return keys;
 
-    return keys;
+    free(keys);
+    return NULL;
 }
 
 static const char* _keys_lookup_ini(Efreet_Ini* ini,
@@ -53,7 +59,7 @@ static const char* _keys_lookup_ini(Efreet_Ini* ini,
     if(!section)
         return NULL;
     const char* action = eina_hash_find(section, key);
-    if(action)
+    if(!action)
         return NULL;
     return action;
 }
@@ -61,16 +67,40 @@ static const char* _keys_lookup_ini(Efreet_Ini* ini,
 const char* keys_lookup(const keys_t* keys,
                         const char* context, const char* key)
 {
-    const char* k = _keys_lookup_ini(keys->user_config_file, context, key);
-    if(k) return k;
-    if(!*k) return NULL;
-    return _keys_lookup_ini(keys->sys_config_file, context, key);
+    for(int i = 0; i < CONFIG_NUM; ++i)
+    {
+        const char* k = _keys_lookup_ini(keys->configs[i], context, key);
+        if(k)
+        {
+            if(!*k)
+                return NULL; /* Explicit 'no action' */
+            else
+                return k;
+        }
+    }
+    return NULL;
 }
 
-void keys_shutdown(keys_t* keys)
+const char* keys_lookup_by_event(const keys_t* keys,
+                                 const char* context,
+                                 const Evas_Event_Key_Up* event)
 {
-    efreet_ini_free(keys->sys_config_file);
-    efreet_ini_free(keys->user_config_file);
+    const char* k = event->keyname;
+
+    if(evas_key_modifier_is_set(event->modifiers, "Alt"))
+    {
+        char key[512];
+        snprintf(key, 512, "Hold-%s", k);
+        return keys_lookup(keys, context, key);
+    }
+
+    return keys_lookup(keys, context, k);
+}
+
+void keys_free(keys_t* keys)
+{
+    for(int i = 0; i < CONFIG_NUM; ++i)
+        efreet_ini_free(keys->configs[i]);
     free(keys);
 
     efreet_shutdown();

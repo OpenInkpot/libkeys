@@ -19,7 +19,7 @@ configure: configure-stamp
 configure-stamp:
 	dh_testdir
 
-	./autogen.sh --prefix=/usr $(confflags) CFLGS="$(CFLAGS)"
+	./autogen.sh --prefix=/usr --sysconfdir=/etc $(confflags) CFLGS="$(CFLAGS)"
 	touch $@
 
 clean:

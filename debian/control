@@ -16,7 +16,7 @@ Description: OpenInkpot key handling library
 Package: libkeys0-dbg
 Architecture: any
 Depends: libkeys0 (= ${binary:Version})
-Description: FIXME -- debug package
+Description: OpenInkpot key handling library -- debug package
  This library provides a code for handling keys for OpenInkpot applications.
  .
  This package contains debugging symbols.
@@ -25,7 +25,7 @@ Package: libkeys-dev
 Architecture: any
 Section: libdevel
 Depends: libkeys0 (= ${binary:Version})
-Description: FIXME -- development files
+Description: OpenInkpot key handling library -- development files
  This library provides a code for handling keys for OpenInkpot applications.
  .
  This package contains development files.

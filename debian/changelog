@@ -1,3 +1,10 @@
+libkeys (0.1-2) asimov; urgency=low
+
+  * Debugging interface added (LIBKEYS_DEBUG environment variable).
+  * Fixed bug with improper ordering of configs for keys lookup.
+
+ -- Mikhail Gusarov <dottedmag@dottedmag.net>  Fri, 04 Sep 2009 02:15:34 +0700
+
 libkeys (0.1-1) asimov; urgency=low
 
   * Initial release.

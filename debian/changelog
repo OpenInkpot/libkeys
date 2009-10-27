@@ -1,3 +1,9 @@
+libkeys (0.1-3) asimov; urgency=low
+
+  * Plug small memory leak: free app_name in keys_kfree.
+
+ -- Mikhail Gusarov <dottedmag@dottedmag.net>  Wed, 28 Oct 2009 05:30:05 +0600
+
 libkeys (0.1-2) asimov; urgency=low
 
   * Debugging interface added (LIBKEYS_DEBUG environment variable).

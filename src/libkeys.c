@@ -151,6 +151,7 @@ void keys_free(keys_t* keys)
 
     for(int i = 0; i < CONFIG_NUM; ++i)
         efreet_ini_free(keys->configs[i]);
+    free(keys->app_name);
     free(keys);
 
     efreet_shutdown();

@@ -12,6 +12,7 @@
  */
 
 #include <stdbool.h>
+#include <Eina.h>
 #include <Evas.h>
 
 struct keys_t;
@@ -30,6 +31,22 @@ const char* keys_lookup_by_event(const keys_t* keys,
                                  const char* context,
                                  const Evas_Event_Key_Up* event);
 
+
+/*
+ * Return list of keys mapped to action
+ *
+ */
+
+Eina_List* keys_reverse_lookup(const keys_t* keys,
+                               const char* context,
+                               const char* action);
+
 void keys_free(keys_t* keys);
+
+
+/*
+ * Return localized key naming as referred in printed device manual
+ */
+const char* keys_get_key_name(const char* keysym);
 
 #endif

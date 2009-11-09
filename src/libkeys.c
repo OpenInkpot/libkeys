@@ -207,6 +207,8 @@ _keys_map_key(keys_t* keys, const char* context, const char* key,
     {
         _unmap_reverse(ctx, key, action);
         eina_stringshare_del(binding->action);
+        if(binding->where)
+            eina_stringshare_del(binding->where);
     }
     else
     {

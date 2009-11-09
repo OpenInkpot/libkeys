@@ -1,3 +1,13 @@
+libkeys (0.2-3) asimov; urgency=low
+
+  [ Mikhail Gusarov ]
+  * Avoid memory overruns by passing correct strings to
+    eina_stringshare_del
+  * Plug memory leak
+  * Do not deinit Eina right after parsing .ini files
+
+ -- Alexander V. Nikolaev <avn@daemon.hole.ru>  Mon, 09 Nov 2009 20:40:13 +0200
+
 libkeys (0.2-2) asimov; urgency=low
 
   * Run with empty keymap if no one files loaded, don't abort.

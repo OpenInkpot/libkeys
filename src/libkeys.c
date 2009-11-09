@@ -160,11 +160,19 @@ _unmap_reverse(keys_context_t* ctx, const char* key, const char* action)
 {
     keys_reverse_binding_t* reverse = _find_reverse_binding(ctx->reverse_map,
         action);
-    reverse->keysyms = eina_list_remove(reverse->keysyms, key);
-    eina_stringshare_del(key);
+
+    const char* data;
+    Eina_List* l, *l_next;
+    EINA_LIST_FOREACH_SAFE(reverse->keysyms, l, l_next, data)
+        if(!strcmp(data, key))
+        {
+            reverse->keysyms = eina_list_remove_list(reverse->keysyms, l);
+            eina_stringshare_del(data);
+        }
+
     if(!reverse->keysyms)
     {
-        eina_stringshare_del(action);
+        eina_stringshare_del(reverse->action);
         ctx->reverse_map = eina_list_remove(ctx->reverse_map, reverse);
         free(reverse);
     }

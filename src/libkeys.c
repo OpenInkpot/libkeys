@@ -340,6 +340,8 @@ _load_one_config(keys_t* keys, const char* template, const char* app_name)
 
 keys_t* keys_alloc(const char* app_name)
 {
+    eina_init();
+
     if(getenv("LIBKEYS_DEBUG"))
         _libkeys_debug_level = atoi(getenv("LIBKEYS_DEBUG"));
 
@@ -454,6 +456,8 @@ void keys_free(keys_t* keys)
 
     free(keys->app_name);
     free(keys);
+
+    eina_shutdown();
 }
 
 const char*

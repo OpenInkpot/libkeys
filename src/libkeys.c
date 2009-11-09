@@ -355,12 +355,7 @@ keys_t* keys_alloc(const char* app_name)
     if(_load_one_config(keys, home, app_name))
         loaded = true;
     if(!loaded)
-    {
-        free(keys->app_name);
-        free(keys);
         log(LIBKEYS_DEBUG_CONFIGS, "%s: no keymaps", app_name);
-        return NULL;
-    }
     keys_dump(keys);
     return keys;
 }

@@ -1,3 +1,9 @@
+libkeys (0.2-2) asimov; urgency=low
+
+  * Run with empty keymap if no one files loaded, don't abort.
+
+ -- Alexander V. Nikolaev <avn@daemon.hole.ru>  Mon, 09 Nov 2009 04:44:55 +0200
+
 libkeys (0.2-1) asimov; urgency=low
 
   * Non-maintainer upload.

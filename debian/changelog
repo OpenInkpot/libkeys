@@ -1,3 +1,10 @@
+libkeys (0.2-1) asimov; urgency=low
+
+  * Non-maintainer upload.
+  * Major rewrite of libkeys, added reverse lookup and support of translations
+
+ -- Alexander V. Nikolaev <avn@daemon.hole.ru>  Mon, 09 Nov 2009 03:37:03 +0200
+
 libkeys (0.1-3) asimov; urgency=low
 
   * Plug small memory leak: free app_name in keys_kfree.

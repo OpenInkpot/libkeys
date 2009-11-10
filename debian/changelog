@@ -1,4 +1,4 @@
-libkeys (0.2-2) asimov; urgency=low
+libkeys (0.2-3) asimov; urgency=low
 
   * Fix segfault on key override
 

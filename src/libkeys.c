@@ -205,7 +205,7 @@ _keys_map_key(keys_t* keys, const char* context, const char* key,
     keys_binding_t* binding = _find_binding(ctx->map, key);
     if(binding)
     {
-        _unmap_reverse(ctx, key, action);
+        _unmap_reverse(ctx, key, binding->action);
         eina_stringshare_del(binding->action);
         if(binding->where)
             eina_stringshare_del(binding->where);

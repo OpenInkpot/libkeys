@@ -1,3 +1,9 @@
+libkeys (0.2-2) asimov; urgency=low
+
+  * Fix segfault on key override
+
+ -- Alexander V. Nikolaev <avn@daemon.hole.ru>  Tue, 10 Nov 2009 02:28:17 +0200
+
 libkeys (0.2-3) asimov; urgency=low
 
   [ Mikhail Gusarov ]

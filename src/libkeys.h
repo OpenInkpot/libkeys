@@ -22,7 +22,7 @@ keys_t* keys_alloc(const char* app_name);
 
 /*
  * Returns action for specified pair (context, key)
- * or NULL if no action can be found.
+ * or "" if no action can be found.
  */
 const char* keys_lookup(const keys_t* keys,
                         const char* context, const char* key);

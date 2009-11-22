@@ -6,3 +6,7 @@ AM_CFLAGS = -Wall --std=c99 -DSYSCONFDIR="\"$(sysconfdir)\"" -DDATADIR="\"$(data
 
 INCLUDES = $(EFL_CFLAGS)
 libkeys_la_LDFLAGS = -Wl,--no-undefined $(EFL_LIBS)
+
+noinst_PROGRAMS = keys_test 
+keys_test_SOURCES = keys_test.c
+keys_test_LDADD = libkeys.la $(EFL_LIBS)

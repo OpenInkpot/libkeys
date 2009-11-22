@@ -1,3 +1,9 @@
+libkeys (0.2-5) asimov; urgency=low
+
+  * Add draft of key naming translation for en/ru/uk
+
+ -- Alexander V. Nikolaev <avn@daemon.hole.ru>  Sun, 22 Nov 2009 00:03:24 +0200
+
 libkeys (0.2-4) asimov; urgency=low
 
   * Fix segfault on key override

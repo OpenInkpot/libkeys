@@ -1,3 +1,9 @@
+libkeys (0.2-5+b1) zelazny; urgency=low
+
+  * BinNMU due to updated EFL
+
+ -- Mikhail Gusarov <dottedmag@dottedmag.net>  Thu, 14 Jan 2010 10:12:08 +0600
+
 libkeys (0.2-5) asimov; urgency=low
 
   * Add draft of key naming translation for en/ru/uk

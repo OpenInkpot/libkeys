@@ -1,6 +1,7 @@
 Source: libkeys
 Section: core
 Maintainer: Mikhail Gusarov <dottedmag@dottedmag.net>
+Uploaders: Alexander Kerner <lunohod@openinkpot.org>
 Build-Depends: debhelper (>= 7), autoconf, automake, libtool, pkg-config, libeina-dev, libefreet-dev, libevas-dev
 XCS-Cross-Host-Build-Depends: debhelper (>= 7), autoconf, automake, automake, libtool, pkg-config
 XCS-Cross-Build-Depends: libeina-dev, libefreet-dev, libevas-dev

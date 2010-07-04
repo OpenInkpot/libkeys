@@ -2,7 +2,7 @@ libkeys (0.2.6+b1) zelazny; urgency=low
 
   * Rebuild due to updated EFL
 
- -- Alexander Kerner <lunohod@openikpot.org>  Sun, 04 Jul 2010 21:29:58 +0200
+ -- Alexander Kerner <lunohod@openinkpot.org>  Sun, 04 Jul 2010 21:29:58 +0200
 
 libkeys (0.2.6) zelazny; urgency=low
 

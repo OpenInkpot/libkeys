@@ -27,3 +27,5 @@ libkeys.pc
 libtool
 ltmain.sh
 missing
+po/*.mo
+src/keys_test

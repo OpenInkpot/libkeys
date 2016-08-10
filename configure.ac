@@ -5,6 +5,6 @@ AM_INIT_AUTOMAKE(foreign)
 AC_PROG_CC
 AM_PROG_LIBTOOL
 
-PKG_CHECK_MODULES(EFL, [efreet evas eina-0])
+PKG_CHECK_MODULES(EFL, [efreet evas eina])
 
 AC_OUTPUT([Makefile src/Makefile po/Makefile libkeys.pc])
